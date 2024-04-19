@@ -1,5 +1,3 @@
 [{$smarty.block.parent}]
 <div id="searchSuggestionDiv"></div>
-<script>
-    console.log('EAT SHIT')
-</script>
+[{oxscript include=$oViewConf->getModuleUrl('fcsearchsuggest', 'out/src/js/suggestions.js')}]
