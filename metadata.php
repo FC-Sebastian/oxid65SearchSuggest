@@ -21,6 +21,11 @@ $aModule = [
     'version'     => '1.0',
     'author'      => 'Ich',
     'blocks'      => [
+        [
+            'template' => 'widget/header/search.tpl',
+            'block'    => 'widget_header_search_form',
+            'file'     => 'widget/header/widget_header_search_form.tpl'
+        ],
     ],
     'extend' => [
     ],
