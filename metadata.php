@@ -24,7 +24,7 @@ $aModule = [
         [
             'template' => 'widget/header/search.tpl',
             'block'    => 'widget_header_search_form',
-            'file'     => 'widget/header/widget_header_search_form.tpl'
+            'file'     => 'out/blocks/widget/header/widget_header_search_form.tpl'
         ],
     ],
     'extend' => [
