@@ -9,23 +9,18 @@ $sMetadataVersion = '2.1';
  * Module information
  */
 $aModule = [
-    'id'          => '',
+    'id'          => 'fcsearchsuggest',
     'title'       => [
-        'de' => '',
-        'en' => ''
+        'de' => 'Suchvorschläge',
+        'en' => 'Search suggestions'
     ],
     'description' => [
-        'de' => '',
-        'en' => ''
+        'de' => 'Schlägt passende Artikel bei Suchen vor',
+        'en' => 'Recommends fitting products during searches'
     ],
-    'version'     => '',
-    'author'      => '',
+    'version'     => '1.0',
+    'author'      => 'Ich',
     'blocks'      => [
-        [
-            'template' => '',
-            'block'    => '',
-            'file'     => ''
-        ],
     ],
     'extend' => [
     ],
