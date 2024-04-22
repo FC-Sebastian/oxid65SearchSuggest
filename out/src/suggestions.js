@@ -1,1 +1,0 @@
-console.log('EAT SHIT AND DIE');

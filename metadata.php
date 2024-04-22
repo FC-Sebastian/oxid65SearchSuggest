@@ -30,6 +30,7 @@ $aModule = [
     'extend' => [
     ],
     'controllers' => [
+        'fc_search_suggest' => \FATCHIP\SearchSuggest\Application\Controller\SearchSuggestionsAjax::class
     ],
     'templates' => [
     ]
