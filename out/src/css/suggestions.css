@@ -1,0 +1,25 @@
+.searchSuggestions {
+    /* positioning */
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    transform: translateX(-25%);
+    z-index: 1000;
+
+    /* bootstrap4 .container with double width */
+    width: 200%; !important;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.suggestionImg {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 10rem;
+}
+
+.h-10 {
+    height: 10% !important;
+}

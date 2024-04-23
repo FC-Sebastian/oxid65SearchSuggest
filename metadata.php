@@ -28,6 +28,8 @@ $aModule = [
         ],
     ],
     'extend' => [
+        \OxidEsales\Eshop\Application\Model\Article::class => \FATCHIP\SearchSuggest\Application\Model\Article::class,
+        \OxidEsales\Eshop\Application\Model\Category::class => \FATCHIP\SearchSuggest\Application\Model\Category::class
     ],
     'controllers' => [
         'fc_search_suggest' => \FATCHIP\SearchSuggest\Application\Controller\SearchSuggestionsAjax::class

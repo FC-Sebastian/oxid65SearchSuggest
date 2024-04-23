@@ -6,6 +6,55 @@ class SearchSuggestionsAjax extends \OxidEsales\Eshop\Application\Controller\Fro
 {
     public function render()
     {
-        echo "bilup";
+        $oRequest = \OxidEsales\Eshop\Core\Registry::getRequest();
+        $oArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
+        $oCategory = oxNew(\OxidEsales\Eshop\Application\Model\Category::class);
+        $sSearch = $oRequest->getRequestParameter('search');
+
+        $aArticles = $oArticle->fcGetRecommendedArticles($sSearch);
+        $aCategories = $oCategory->fcGetRecommendedCategories($sSearch);
+
+        if (!empty($aArticles) || !empty($aCategories)) {
+            $this->getHtml($aArticles, $aCategories);
+        }
+        die();
+    }
+
+    protected function getHtml($aArticles, $aCategories)
+    {
+        if (count($aCategories)) {
+            $sDiv = '<div class="col-9">';
+        } else {
+            $sDiv = '<div class="col-12">';
+        }
+
+        $sDiv .= $this->getArticleSuggestions($aArticles) . '</div>';
+
+        if (count($aCategories)) {
+            $sDiv .= $this->getCategorySuggestions($aCategories);
+        }
+
+        echo $sDiv;
+    }
+
+    protected function getArticleSuggestions($aArticles)
+    {
+        $sDiv = '';
+        if (!empty($aArticles)) {
+            foreach ($aArticles as $aArticle) {
+                $sDiv .= "<div class='row border rounded justify-content-around'><a class='d-block w-100 align-middle' href='{$aArticle['url']}'><div class='w-25 text-center d-inline-block'><img class='suggestionImg' src='{$aArticle['picUrl']}'></div>{$aArticle['title']}</a></div>";
+            }
+        }
+        return $sDiv;
+    }
+
+    protected function getCategorySuggestions($aCategories)
+    {
+        $sDiv = '<div class="col-3 border-left border-dark"><ul class="h-100 pt-5">';
+
+        foreach ($aCategories as $aCategory) {
+            $sDiv .= "<li class='h-10'><a href='{$aCategory["url"]}'>{$aCategory["title"]}</a></li>";
+        }
+        return $sDiv . '</ul></div>';
     }
 }
