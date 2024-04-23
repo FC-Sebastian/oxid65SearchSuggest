@@ -21,7 +21,10 @@ class SearchSuggestionsAjax extends \OxidEsales\Eshop\Application\Controller\Fro
         $aCategories = $oCategory->fcGetRecommendedCategories($sSearch);
 
         if (!empty($aArticles) || !empty($aCategories)) {
-            $this->getHtml($aArticles, $aCategories);
+            //used when html is build server side
+            //$this->getHtml($aArticles, $aCategories);
+
+            echo json_encode(['articles' => $aArticles, 'categories' => $aCategories]);
         }
         die();
     }
