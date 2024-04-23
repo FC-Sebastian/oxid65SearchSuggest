@@ -11,6 +11,16 @@ class Category extends Category_parent
     protected $iTplLang;
     protected $iNumOfCategorySuggestions = 10;
 
+    /**
+     * Gets formatted array containing matching category titles and url
+     *
+     * @param $sSearch
+     * @return array
+     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws \Doctrine\DBAL\Exception
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function fcGetRecommendedCategories($sSearch)
     {
         $oLang = Registry::getLang();
@@ -33,6 +43,8 @@ class Category extends Category_parent
     }
 
     /**
+     * Gets category results where search matches title
+     *
      * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws \Doctrine\DBAL\Driver\Exception
      * @throws \Psr\Container\ContainerExceptionInterface
@@ -62,6 +74,13 @@ class Category extends Category_parent
         return $oResult->fetchAllAssociative();
     }
 
+    /**
+     * Adds <b></b> around search found in title
+     *
+     * @param $oCategory
+     * @param $sSearch
+     * @return string
+     */
     protected function fcGetBoldTitle($oCategory, $sSearch)
     {
         $sLowTitle = strtolower($oCategory->oxcategories__oxtitle->value);

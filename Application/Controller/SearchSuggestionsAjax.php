@@ -4,6 +4,12 @@ namespace FATCHIP\SearchSuggest\Application\Controller;
 
 class SearchSuggestionsAjax extends \OxidEsales\Eshop\Application\Controller\FrontendController
 {
+    /**
+     * Gets matching articles and categories via search request param,
+     * then builds and echoes suggestions html string
+     *
+     * @return void
+     */
     public function render()
     {
         $oRequest = \OxidEsales\Eshop\Core\Registry::getRequest();
@@ -20,6 +26,13 @@ class SearchSuggestionsAjax extends \OxidEsales\Eshop\Application\Controller\Fro
         die();
     }
 
+    /**
+     * Builds and echoes suggestions html from article and categories
+     *
+     * @param $aArticles
+     * @param $aCategories
+     * @return void
+     */
     protected function getHtml($aArticles, $aCategories)
     {
         if (count($aCategories)) {
@@ -37,6 +50,12 @@ class SearchSuggestionsAjax extends \OxidEsales\Eshop\Application\Controller\Fro
         echo $sDiv;
     }
 
+    /**
+     * Returns html-string containing matching articles
+     *
+     * @param $aArticles
+     * @return string
+     */
     protected function getArticleSuggestions($aArticles)
     {
         $sDiv = '';
@@ -48,6 +67,12 @@ class SearchSuggestionsAjax extends \OxidEsales\Eshop\Application\Controller\Fro
         return $sDiv;
     }
 
+    /**
+     * Returns html-string containing matching categories
+     *
+     * @param $aCategories
+     * @return string
+     */
     protected function getCategorySuggestions($aCategories)
     {
         $sDiv = '<div class="col-3 border-left border-dark"><ul class="h-100 pt-5">';

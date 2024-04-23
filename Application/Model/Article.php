@@ -12,12 +12,14 @@ class Article extends Article_parent
     protected $iTplLang;
 
     /**
+     * Returns formatted array containing matching article title, url, and thumbnail-url
+     *
      * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws \Doctrine\DBAL\Driver\Exception
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Doctrine\DBAL\Exception
      */
-    public function fcGetRecommendedArticles($sSearch)
+    public function fcGetRecommendedArticles($sSearch): array
     {
         $oLang = Registry::getLang();
         $this->iTplLang = $oLang->getTplLanguage();
@@ -48,6 +50,8 @@ class Article extends Article_parent
     }
 
     /**
+     * Gets articles where search matches title
+     *
      * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws \Doctrine\DBAL\Driver\Exception
      * @throws \Psr\Container\ContainerExceptionInterface
@@ -78,6 +82,8 @@ class Article extends Article_parent
     }
 
     /**
+     * Gets articles where search matches long desc
+     *
      * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws \Doctrine\DBAL\Driver\Exception
      * @throws \Psr\Container\ContainerExceptionInterface
@@ -116,6 +122,13 @@ class Article extends Article_parent
         return $oResult->fetchAllAssociative();
     }
 
+    /**
+     * Adds <b></b> around search found in title or unedited title if search is not in title
+     *
+     * @param $oArticle
+     * @param $sSearch
+     * @return string
+     */
     protected function fcGetBoldTitle($oArticle, $sSearch)
     {
         $sLowTitle = strtolower($oArticle->oxarticles__oxtitle->value);
